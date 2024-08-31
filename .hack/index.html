@@ -1,0 +1,338 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta content="width=device-width, initial-scale=1.0" name="viewport">
+
+  <title>Optimising Energy Consumption and Demand</title>
+  <meta content="" name="description">
+  <meta content="" name="keywords">
+
+  <!-- Favicons -->
+  <link href="assets/img/favicon.png" rel="icon">
+  <link href="assets/img/apple-touch-icon.png" rel="apple-touch-icon">
+
+  <!-- Google Fonts -->
+  <link
+    href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,400i,600,700|Raleway:300,400,400i,500,500i,700,800,900"
+    rel="stylesheet">
+
+  <!-- Vendor CSS Files -->
+  <link href="assets/vendor/animate.css/animate.min.css" rel="stylesheet">
+  <link href="assets/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+  <link href="assets/vendor/bootstrap-icons/bootstrap-icons.css" rel="stylesheet">
+  <link href="assets/vendor/boxicons/css/boxicons.min.css" rel="stylesheet">
+  <link href="assets/vendor/glightbox/css/glightbox.min.css" rel="stylesheet">
+  <link href="assets/vendor/swiper/swiper-bundle.min.css" rel="stylesheet">
+
+  <!-- Template Main CSS File -->
+  <link href="assets/css/style.css" rel="stylesheet">
+
+  <style>
+    input[type="text"] {
+      padding: 5px;
+      width: 200px;
+      font-size: 16px;
+    }
+  </style>
+
+  <!-- =======================================================
+  * Template Name: Economic Inequality
+  * Template URL: https://bootstrapmade.com/ebusiness-bootstrap-corporate-template/
+  * Updated: Mar 17 2024 with Bootstrap v5.3.3
+  * Author: BootstrapMade.com
+  * License: https://bootstrapmade.com/license/
+  ======================================================== -->
+  <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+    <script type="text/javascript">
+      google.charts.load('current', {'packages':['corechart']});
+      google.charts.setOnLoadCallback(drawChart);
+      google.charts.load('current', {packages: ['corechart', 'bar']});
+      google.charts.setOnLoadCallback(drawBasic);
+
+      function drawBasic() {
+
+        var data = new google.visualization.DataTable();
+        data.addColumn('timeofday', 'Time of Day');
+        data.addColumn('number', 'Power Consumption');
+
+        data.addRows([
+          [{v: [1, 0, 0], f: '1 am'}, 1],
+          [{v: [2, 0, 0], f: '2 am'}, 1],
+          [{v: [3, 0, 0], f:'3 am'}, 1],
+          [{v: [4, 0, 0], f: '4 am'}, 1],
+          [{v: [5, 0, 0], f: '5 am'}, 2],
+          [{v: [6, 0, 0], f: '6 am'}, 1],
+          [{v: [7, 0, 0], f: '7 am'}, 2],
+          [{v: [8, 0, 0], f: '8 am'}, 4],
+          [{v: [9, 0, 0], f: '9 am'}, 4],
+          [{v: [10, 0, 0], f: '10 am'}, 3],
+          [{v: [11, 0, 0], f: '11 am'}, 5],
+          [{v: [12, 0, 0], f: '12 pm'}, 3],
+          [{v: [13, 0, 0], f: '1 pm'}, 3],
+          [{v: [14, 0, 0], f: '2 pm'}, 3],
+          [{v: [15, 0, 0], f: '3 pm'}, 3],
+          [{v: [16, 0, 0], f: '4 pm'}, 4],
+          [{v: [17, 0, 0], f: '5 pm'}, 5],
+          [{v: [18, 0, 0], f: '6 pm'}, 6],
+          [{v: [19, 0, 0], f: '7 pm'}, 10],
+          [{v: [20, 0, 0], f: '8 pm'}, 11],
+          [{v: [21, 0, 0], f: '9 pm'}, 15],
+          [{v: [22, 0, 0], f: '10 pm'}, 15],
+          [{v: [23, 0, 0], f: '11 pm'}, 7],
+          [{v: [24, 0, 0], f: '12 pm'}, 3]
+        ]);
+
+        var options = {
+          title: 'Power consumption of a city in the Day',
+          hAxis: {
+            title: 'Time of Day',
+            format: 'h:mm a',
+            viewWindow: {
+              min: [0, 30, 0],
+              max: [24, 30, 0]
+            }
+          },
+          vAxis: {
+            title: 'Rating (scale of 1-10)'
+          }
+        };
+
+      var chart = new google.visualization.ColumnChart(document.getElementById('chart_div'));
+
+      chart.draw(data, options);
+      }
+
+      function drawChart() {
+
+        var data = google.visualization.arrayToDataTable([
+          ['Electronics', 'Power Consumption'],
+          ['Washing Machine',     11],
+          ['Oven',      2],
+          ['Iron Box',  2],
+          [' TV', 2],
+          ['Mixer',    7]
+        ]);
+
+        var options = {
+          title: 'Power consumption'
+        };
+
+        var chart = new google.visualization.PieChart(document.getElementById('piechart'));
+
+        chart.draw(data, options);
+      }
+      google.charts.load('current', {packages: ['corechart', 'bar']});
+google.charts.setOnLoadCallback(drawMultSeries);
+
+function drawMultSeries() {
+      var data = google.visualization.arrayToDataTable([
+        ['Appliance', 'Today', 'Yesterday'],
+        ['Motor', 15, 20],
+        ['Washing Machine', 60, 40],
+        ['Oven', 45, 30],
+        ['TV', 120, 90],
+        ['Mixer', 3, 10]
+      ]);
+
+      var options = {
+        title: 'Power Consumption',
+        chartArea: {width: '50%'},
+        hAxis: {
+          title: 'Time (min)',
+          minValue: 0
+        },
+        vAxis: {
+          title: 'Appliances'
+        }
+      };
+
+      var chart = new google.visualization.BarChart(document.getElementById('chart'));
+      chart.draw(data, options);
+    }
+
+    function search() {
+      // Get the value from the input element
+      var searchTerm = document.getElementById('search').value;
+      const consume=[1,1,1,1,2,1,2,4,4,3,5,3,3,3,3,4,5,,6,10,11,15,15,7,3];
+      p=0;
+
+      for(x in consume){
+        p+=1;
+        if (searchTerm >=x) {
+          document.getElementById('output').innerHTML = 'Time = '+ p ;
+      }
+      }
+
+      // Perform some processing or logic based on the search term
+      // For example, you can use an if-else statement or a switch statement
+
+      // Simulate a simple example by checking for specific search terms
+      
+    }
+
+    
+
+// Function to check if the input is greater than any element in the array
+    
+    </script>
+</head>
+
+<body>
+  
+  <!-- ======= Header ======= -->
+  <header id="header" class="fixed-top d-flex align-items-center">
+    <div class="container d-flex justify-content-between">
+
+      <div class="logo">
+        <h2><a href="index.html"><span>Optimising Energy</span> Consumption and Demand</a></h2>
+        <!-- Uncomment below if you prefer to use an image logo -->
+        <!-- <a href="index.html"><img src="assets/img/logo.png" alt="" class="img-fluid"></a>-->
+      </div>
+
+      <nav id="navbar" class="navbar">
+        <ul>
+          <li><a class="nav-link scrollto active" href="#hero">Home</a></li>
+          <li><a class="nav-link scrollto" href="#Exploration">Consumption</a></li>
+          <li><a class="nav-link scrollto" href="#Dashboard">Dashboard</a></li>
+          <li><a class="nav-link scrollto" href="#Report">Report</a></li>
+         
+        </ul>
+        <i class="bi bi-list mobile-nav-toggle"></i>
+      </nav><!-- .navbar -->
+
+    </div>
+  </header><!-- End Header -->
+
+  <!-- ======= hero Section ======= -->
+  <section id="hero">
+    <div class="hero-container">
+      <div id="heroCarousel" class="carousel slide carousel-fade" data-bs-ride="carousel" data-bs-interval="5000">
+
+        <ol id="hero-carousel-indicators" class="carousel-indicators"></ol>
+
+        <div class="carousel-inner" role="listbox">
+
+          <div class="carousel-item active" style="background-image: url(assets/img/hero-carousel/1.jpg)">
+            <div class="carousel-container">
+              <div class="container">
+                <h2 class="animate__animated animate__fadeInDown">Optimising Energy Consumption and Demand</h2>
+                <p class="animate__animated animate__fadeInUp">Welcome! Power Up Your Knowledge: Optimizing Energy
+                  Consumption and Demand. <br> Join us in building a sustainable future: Let's optimize
+                  energy consumption and demand together!</p>
+
+                <a href="#about" class="btn-get-started scrollto animate__animated animate__fadeInUp">Get Started</a>
+              </div>
+            </div>
+          </div>
+
+          <div class="carousel-item" style="background-image: url(assets/img/hero-carousel/2.jpg)">
+            <div class="carousel-container">
+              <div class="container">
+                <h2 class="animate__animated animate__fadeInDown">Optimising Energy Consumption and Demand</h2>
+                <p class="animate__animated animate__fadeInUp">Welcome! Dive into optimizing energy consumption and
+                  demand for a sustainable future. <br> Join us in shaping a greener, more efficient energy landscape.
+                  Get Started!
+                </p>
+                <a href="#about" class="btn-get-started scrollto animate__animated animate__fadeInUp">Get Started</a>
+              </div>
+            </div>
+          </div>
+
+        </div>
+
+        <a class="carousel-control-prev" href="#heroCarousel" role="button" data-bs-slide="prev">
+          <span class="carousel-control-prev-icon bi bi-chevron-left" aria-hidden="true"></span>
+        </a>
+
+        <a class="carousel-control-next" href="#heroCarousel" role="button" data-bs-slide="next">
+          <span class="carousel-control-next-icon bi bi-chevron-right" aria-hidden="true"></span>
+        </a>
+
+      </div>
+    </div>
+  </section><!-- End Hero Section -->
+
+  <main id="main">
+
+    <!-- ======= Exploration Section ======= -->
+    <section id="Exploration">
+      <br />
+      <h1 class="sub-heading">Power Consumption</h1>
+      <div id="chart" style="width: 900px; height: 500px;"></div>
+      
+      <!-- ======= Dashboard Section ======= -->
+      <section id="Dashboard">
+        <h1 class="sub-heading">Energy Dashboard</h1>
+        <div id="piechart" style="width: 900px; height: 500px;"></div>
+        </div><!-- End Dashboard Section -->
+
+        <!-- ======= Report Section ======= -->
+        <section id="Report">
+          <h1 class="sub-heading">Reports</h1>
+          <div id="chart_div" style="width: 900px; height: 500px;"></div> <br /><!-- End Report Section -->
+
+          <!-- ======= Story Section ======= -->
+          <section id="Story">
+            <h1 class="sub-heading">Consumption Status
+
+            </h1>
+            <div style="margin-left: 50px;">
+              <font size="4", type="ariel">
+               <p > Average peak hours is 8pm to 10pm </p> 
+              </font>
+              
+            </div>
+            
+            </div><!-- End Story Section -->
+
+            <hr class="solid">
+           
+                    
+
+                  
+
+  </main><!-- End #main -->
+
+  <!-- ======= Footer ======= -->
+  <footer>
+    <div class="footer-area">
+      <div class="container">
+        <div class="row">
+          <div class="col-md-4">
+            <div class="footer-content">
+              <div class="footer-head">
+                <div class="footer-logo">
+                  <h2><span>Optimising Energy</span> Consumption and Demand</h2>
+                </div>
+
+                <p>Join us in building a sustainable future: Let's optimize
+                  energy consumption and demand together!</p>
+
+              </div>
+            </div>
+          </div>
+          <!-- end single footer -->
+        </div>
+      </div>
+    </div>
+  </footer><!-- End  Footer -->
+
+  <div id="preloader"></div>
+  <a href="#" class="back-to-top d-flex align-items-center justify-content-center"><i
+      class="bi bi-arrow-up-short"></i></a>
+
+  <!-- Vendor JS Files -->
+  <script src="assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+  <script src="assets/vendor/glightbox/js/glightbox.min.js"></script>
+  <script src="assets/vendor/isotope-layout/isotope.pkgd.min.js"></script>
+  <script src="assets/vendor/swiper/swiper-bundle.min.js"></script>
+  <script src="assets/vendor/php-email-form/validate.js"></script>
+
+  <!-- Template Main JS File -->
+  <script src="assets/js/main.js"></script>
+
+</body>
+
+</html>
